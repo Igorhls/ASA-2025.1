@@ -1,0 +1,16 @@
+FROM ubuntu:latest
+
+#Instalar ferramentas de rede
+RUN apt update && apt install -y iproute2 iputils-ping net-tools dnsutils 
+
+RUN apt install openssh-server -y 
+
+#Adicionar usuário
+
+RUN useradd -m redes
+
+#adicionar senha para o usuário redes
+
+RUN echo "redes:123456" | chpasswd
+
+#Manter em execução o container
